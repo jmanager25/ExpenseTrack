@@ -10,7 +10,7 @@ assignees: ''
 As a **role** I want **capability** so that **received benefit**
 
 
-## Acceptance Criteria:
+## Acceptance Criteria
 
  * Acceptance Criteria 1:
  * Acceptance Criteria 2:
@@ -22,4 +22,4 @@ As a **role** I want **capability** so that **received benefit**
 - [ ] Task 2
 - [ ] Task 3
   
-##Epic:
+## Epic:
