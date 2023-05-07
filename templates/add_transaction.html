@@ -1,0 +1,34 @@
+{% extends "form_base.html" %}
+
+{% block content %}
+<main class="m-5">
+    <h1 class="text-center">Add Transaction</h1>
+    <form action="{% url 'home' %}" method="post" class="mt-5">
+        <div class="form-group mb-2">
+            <label for="transaction_type">Transaction Type</label>
+            <select class="form-select-md form-select" name="transaction_type" id="transaction_type">
+                <option selected>Select the transaction type</option>
+            </select>
+        </div>
+        <div class="form-group mb-2">
+            <label for="date">Date</label>
+            <input class="form-control" type="date" id="date" name="date" placeholder="01/01/2023">
+        </div>
+        <div class="form-group mb-2">
+            <label for="category">Category</label>
+            <input class="form-control" type="text" id="category" name="category" placeholder="Transportation">
+        </div>
+        <div class="form-group mb-2">
+            <label for="amount">Amount</label>
+            <input class="form-control" type="number" id="amount" name="amount" placeholder="25">
+        </div>
+        <div class="form-group mb-2">
+            <label for="Description">Description</label>
+            <input class="form-control" type="text" id="description" name="description" placeholder="uber">
+        </div>
+        <div class="text-center">
+            <button class="btn btn-primary btn-lg mt-4" type="submit">Add transaction</button>
+        </div>
+    </form>
+</main>
+{% endblock %}

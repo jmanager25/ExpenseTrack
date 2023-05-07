@@ -24,11 +24,11 @@ class Transaction(models.Model):
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.CharField(max_length=200)
     date = models.DateField()
-    Transaction_type = models.CharField(
+    transaction_type = models.CharField(
         max_length=20, choices=TRANSACTION_TYPE_CHOICES)
 
     def __str__(self):
-        return self.Transaction_type
+        return self.transaction_type
 
 
 class Savings(models.Model):
