@@ -28,7 +28,7 @@ class Transaction(models.Model):
         max_length=20, choices=TRANSACTION_TYPE_CHOICES)
 
     def __str__(self):
-        return self.description
+        return self.Transaction_type
 
 
 class Savings(models.Model):
