@@ -7,3 +7,9 @@ body {
 .navbar-collapse {
     flex-grow: unset;
 }
+
+/* Balance Section */
+
+.balance {
+    max-width: 50%;
+}
