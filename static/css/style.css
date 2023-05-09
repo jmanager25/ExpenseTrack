@@ -13,3 +13,9 @@ body {
 .balance {
     max-width: 50%;
 }
+
+/* register form */
+
+#register-btn {
+    width: -webkit-fill-available;
+}
