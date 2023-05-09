@@ -27,6 +27,8 @@ class Transaction(models.Model):
     transaction_type = models.CharField(
         max_length=20, choices=TRANSACTION_TYPE_CHOICES)
 
+    objects = models.Manager()
+
     def __str__(self):
         return self.transaction_type
 
