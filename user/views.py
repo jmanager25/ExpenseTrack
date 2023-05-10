@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 
 def register(request):
@@ -13,6 +14,15 @@ def register(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
 
+    user = User.objects.filter(email=email).exists()
+
+    if user:
+        messages.error(request, '''You have already registered
+                       please log in instead''')
+        return render(request, 'register.html')
+
     user = User.objects.create_user(
         username=username, email=email, password=password)
     user.save()
+    messages.success(request, 'Account successfully created')
+    return render(request, 'register.html')
