@@ -36,8 +36,8 @@ def log_in(request):
     if request.method == "GET":
         return render(request, 'login.html')
     else:
-        username = request.Post.get('username')
-        password = request.Post.get('password')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
     user = authenticate(username=username, password=password)
 
