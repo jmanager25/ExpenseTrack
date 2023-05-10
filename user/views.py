@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth import authenticate, login
 
 
 def register(request):
@@ -26,3 +27,24 @@ def register(request):
     user.save()
     messages.success(request, 'Account successfully created')
     return render(request, 'register.html')
+
+
+def log_in(request):
+    """
+    Alows registered users to login in the website
+    """
+    if request.method == "GET":
+        return render(request, 'login.html')
+    else:
+        username = request.Post.get('username')
+        password = request.Post.get('password')
+
+    user = authenticate(username=username, password=password)
+
+    if user:
+        login(request, user)
+        return render(request, 'index.html')
+        messages.success(request, 'Login successfull')
+    else:
+        messages.error(request, 'Incorrect username or password')
+        return render(request, "login.html")
