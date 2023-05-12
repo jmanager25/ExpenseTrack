@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 
+@login_required(login_url='/account/login')
 def register(request):
     """
     Allows users to make the registrantion on the webpage
@@ -43,8 +45,14 @@ def log_in(request):
 
     if user:
         login(request, user)
-        return render(request, 'index.html')
         messages.success(request, 'Login successfull')
+        return render(request, 'index.html')
     else:
         messages.error(request, 'Incorrect username or password')
-        return render(request, "login.html")
+        return render(request, 'login.html')
+
+
+def log_out(request):
+    logout(request)
+    messages.success(request, 'You have been succesfully logged out')
+    return render(request, 'login.html')

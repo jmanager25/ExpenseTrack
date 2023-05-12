@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import CreateView
 from .models import Transaction, Category
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
