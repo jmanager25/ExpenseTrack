@@ -1,9 +1,15 @@
+{% extends 'form_base.html' %}
+
+{% block content %}
+
 {% if messages %}
 <div class="messages mb-4 text-center">
     {% for message in messages %}
-    <div {% if messages.tags %} class="alert alert-{{ message.tags }}" {% endif %}>
+    <div class="alert {% if message.tags %} alert-{{ message.tags }} {% endif %}">
         {{ message }}
     </div>
     {% endfor %}
 </div>
 {% endif %}
+
+{% endblock %}
