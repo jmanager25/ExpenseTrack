@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.timezone import now
 
 
 class Category(models.Model):
@@ -10,9 +11,9 @@ class Category(models.Model):
 
 
 class Transaction(models.Model):
-    INCOME = 'income'
-    EXPENSE = 'expense'
-    SAVING_GOAL = 'saving_goal'
+    INCOME = 'Income'
+    EXPENSE = 'Expense'
+    SAVING_GOAL = 'Saving Goal'
     TRANSACTION_TYPE_CHOICES = [
         (INCOME, 'Income'),
         (EXPENSE, 'Expense'),
@@ -23,7 +24,7 @@ class Transaction(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.CharField(max_length=200)
-    date = models.DateField()
+    date = models.DateField(default=now)
     transaction_type = models.CharField(
         max_length=20, choices=TRANSACTION_TYPE_CHOICES)
 
@@ -38,7 +39,7 @@ class Savings(models.Model):
     name = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
     target_amount = models.DecimalField(max_digits=10, decimal_places=2)
-    target_date = models.DateField()
+    target_date = models.DateField(default=now)
     progress = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):

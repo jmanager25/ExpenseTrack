@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import CreateView
+from django.views.generic.edit import CreateView
 from .models import Transaction, Category
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
