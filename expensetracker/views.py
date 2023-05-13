@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import CreateView
 from .models import Transaction, Category
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
 
 
 def home(request):
@@ -20,13 +21,4 @@ class TransactionCreateView(CreateView):
     model = Transaction
     template_name = "add_transaction.html"
     fields = ['transaction_type', 'date', 'category', 'amount', 'description']
-
-    def get_context_data(self, **kwargs):
-        """
-        Allows the transaction choises to be dinamically 
-        rendered in the template.
-        """
-        context = super().get_context_data(**kwargs)
-        context['transaction_type_choices'
-                ] = Transaction.TRANSACTION_TYPE_CHOICES
-        return context
+    success_url = reverse_lazy('home')
