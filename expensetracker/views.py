@@ -22,3 +22,11 @@ class TransactionCreateView(CreateView):
     template_name = "add_transaction.html"
     fields = ['transaction_type', 'date', 'category', 'amount', 'description']
     success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        """
+        Ensures that the user who submitted the form is associated with the
+        data, to keep track which user added the transaction
+        """
+        form.instance.user = self.request.user
+        return super().form_valid(form)

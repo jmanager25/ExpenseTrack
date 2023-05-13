@@ -3,7 +3,7 @@
 {% block content %}
 <main class="m-5">
     <h1 class="text-center">Add Transaction</h1>
-    <form action="{% url 'home' %}" method="post" class="mt-5">
+    <form action="{% url 'add_transaction' %}" method="post" class="mt-5">
         {% csrf_token %}
         {{ form.as_p }}
         <div class="text-center">
