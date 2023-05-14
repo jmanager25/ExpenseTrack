@@ -3,6 +3,7 @@ from django.views.generic.edit import CreateView
 from .models import Transaction, Category
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
+from django.contrib import messages
 
 
 def landin_page(request):
@@ -38,4 +39,5 @@ class TransactionCreateView(CreateView):
         data, to keep track which user added the transaction
         """
         form.instance.user = self.request.user
+        messages.success(self.request, 'Transaction added successfully!')
         return super().form_valid(form)
