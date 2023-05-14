@@ -3,45 +3,93 @@
 {% block content %}
 
 {% include 'messages_alert.html' %}
-<!-- Balance Section -->
-<section class="card balance m-auto mt-5">
-    <duv class="card-body text-center text">
-        Balance Goes Here
-    </duv>
-</section>
-<!-- Transaction Section -->
-<section class="transaction">
-    <h2 class="text-center mt-5">Transaction</h2>
+
+<!-- Hero Section -->
+<section class="hero-section">
     <div class="text-center mt-5">
-        <a href="{% url 'add_transaction' %}" class="btn btn-primary">Add Transaction</a>
-    </div>
-    <div class="container">
-        <table class="table mt-5 text-center">
-            <thead>
-                <tr>
-                    <th>Type</th>
-                    <th>Date</th>
-                    <th>Category</th>
-                    <th>Amount</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for transaction in transactions%}
-                <tr>
-                    <td>{{ transaction.transaction_type }}</td>
-                    <td>{{ transaction.date }}</td>
-                    <td>{{ transaction.category.name }}</td>
-                    <td>{{ transaction.amount }}</td>
-                    <td>{{ transaction.description }}</td>
-                </tr>
-                {% empty %}
-                <tr>
-                    <td colspan="5">No transactions found</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <p>It's time to keep your expenses in track</p>
+        <h1>The free expense tracker tool that works for you</h1>
+        <p>Track you expenses, income and set saving goals</p>
+        <a href="{% url 'register' %}" class="btn btn-lg m-4">Start now. It's free</a>
+        <!-- Carousel Images -->
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="" class="d-block w-100" alt="" />
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>First slide label</h5>
+                        <p>
+                            Some representative placeholder content for the first slide.
+                        </p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="" class="d-block w-100" alt="" />
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Second slide label</h5>
+                        <p>
+                            Some representative placeholder content for the second
+                            slide.
+                        </p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="" class="d-block w-100" alt="" />
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Third slide label</h5>
+                        <p>
+                            Some representative placeholder content for the third slide.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
     </div>
 </section>
+<!-- About Section -->
+<section class="about mt-4 text-center">
+    <h1 class="">
+        Everything you need to manage your finances with confidence
+    </h1>
+    <div class="container">
+        <div class="row mt-3">
+            <p class="col-sm-6 text-start">
+                Our Expense Tracker is a reliable and effective tool to help you
+                manage your finances. With its simple interface and user-friendly
+                design, you can effortlessly track your income and expenses, and
+                gain a better understanding of your spending habits. You can add
+                transactions and categorize them based on their type, date, and
+                category, allowing you to view your expenses in a clear and
+                organized manner.
+            </p>
+            <p class="col-sm-6 text-start">
+                In addition, our app comes with various features that make
+                managing your finances easy. You can set savings goals and view
+                helpful reports and insights to track your progress and make
+                informed decisions. With our Expense Tracker, you can confidently
+                manage your finances and achieve your financial goals. Sign up now
+                and experience the benefits of our easy-to-use platform!
+            </p>
+        </div>
+    </div>
+</section>
+
 {% endblock content %}
