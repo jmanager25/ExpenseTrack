@@ -24,6 +24,7 @@
                     <th>Category</th>
                     <th>Amount</th>
                     <th>Description</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -34,6 +35,9 @@
                     <td>{{ transaction.category.name }}</td>
                     <td>{{ transaction.amount }}</td>
                     <td>{{ transaction.description }}</td>
+                    <td><a href="{% url 'edit_transaction' pk=transaction.id %}"
+                            class="btn btn-sm btn-secondary">Edit</a>
+                    </td>
                 </tr>
                 {% empty %}
                 <tr>

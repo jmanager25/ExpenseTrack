@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Transaction, Category
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
@@ -41,3 +41,13 @@ class TransactionCreateView(CreateView):
         form.instance.user = self.request.user
         messages.success(self.request, 'Transaction added successfully!')
         return super().form_valid(form)
+
+
+class TransactionUpdateView(UpdateView):
+    """
+    View that allows users to update existing transactions.
+    """
+    model = Transaction
+    template_name = "edit_transaction.html"
+    fields = ['transaction_type', 'date', 'category', 'amount', 'description']
+    success_url = reverse_lazy('home')
