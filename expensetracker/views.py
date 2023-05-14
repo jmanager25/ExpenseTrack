@@ -5,6 +5,14 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 
 
+def landin_page(request):
+    """
+    View that returs the landing page. the first page that the
+    users see when they enter the website.
+    """
+    return render(request, "index.html")
+
+
 @login_required(login_url='login')
 def home(request):
     """
@@ -12,7 +20,7 @@ def home(request):
     transaction list.
     """
     transactions = Transaction.objects.all()
-    return render(request, "index.html", {"transactions": transactions})
+    return render(request, "home.html", {"transactions": transactions})
 
 
 class TransactionCreateView(CreateView):

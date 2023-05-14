@@ -5,7 +5,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 
-@login_required(login_url='/account/login')
 def register(request):
     """
     Allows users to make the registrantion on the webpage
@@ -46,7 +45,7 @@ def log_in(request):
     if user:
         login(request, user)
         messages.success(request, 'Login successfull')
-        return render(request, 'index.html')
+        return render(request, 'home.html')
     else:
         messages.error(request, 'Incorrect username or password')
         return render(request, 'login.html')
@@ -55,4 +54,4 @@ def log_in(request):
 def log_out(request):
     logout(request)
     messages.success(request, 'You have been succesfully logged out')
-    return render(request, 'login.html')
+    return render(request, 'index.html')
