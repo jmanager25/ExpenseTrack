@@ -46,8 +46,8 @@
                         </li>
                     </ul>
                 </div>
-                <div class="collapse navbar-collapse justify-content-end">
-                    <ul class="navbar-nav">
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav justify-content-end">
                         <li class="nav-item me-3">
                             {{ user.username }}
                         </li>
@@ -56,10 +56,10 @@
                         </li>
                         {% else %}
                         <li class="nav-item me-3">
-                            {% url 'login' %}
+                            <a href="{% url 'login' %}" class="nav-link active" aria-current="page">Login</a>
                         </li>
                         <li class="nav-item">
-                            {% url 'register' %}
+                            <a href="{% url 'register' %}" class="nav-link active" aria-current="page">Sign up</a>
                         </li>
                     </ul>
                 </div>
