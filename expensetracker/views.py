@@ -20,7 +20,7 @@ def home(request):
     View that returs the home page and allows user to see the
     transaction list.
     """
-    transactions = Transaction.objects.all()
+    transactions = Transaction.objects.filter(user=request.user)
     return render(request, "home.html", {"transactions": transactions})
 
 
