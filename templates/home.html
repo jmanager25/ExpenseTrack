@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% include 'messages_alert.html' %}
+<!-- Balance Section -->
+<section class="card balance m-auto mt-5">
+    <duv class="card-body text-center text">
+        Balance Goes Here
+    </duv>
+</section>
+<!-- Transaction Section -->
+<section class="transaction">
+    <h2 class="text-center mt-5">Transaction</h2>
+    <div class="text-center mt-5">
+        <a href="{% url 'add_transaction' %}" class="btn btn-primary">Add Transaction</a>
+    </div>
+    <div class="container">
+        <table class="table mt-5 text-center">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Amount</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in transactions%}
+                <tr>
+                    <td>{{ transaction.transaction_type }}</td>
+                    <td>{{ transaction.date }}</td>
+                    <td>{{ transaction.category.name }}</td>
+                    <td>{{ transaction.amount }}</td>
+                    <td>{{ transaction.description }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5">No transactions found</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock content %}

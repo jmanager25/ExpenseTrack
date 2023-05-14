@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 
 
+@login_required(login_url='login')
 def home(request):
     """
     View that returs the home page and allows user to see the
