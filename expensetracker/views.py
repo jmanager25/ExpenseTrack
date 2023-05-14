@@ -51,3 +51,12 @@ class TransactionUpdateView(UpdateView):
     template_name = "edit_transaction.html"
     fields = ['transaction_type', 'date', 'category', 'amount', 'description']
     success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        """
+        Ensures that the user who submit the form is associated with the
+        data, to keep track which user updated the transaction
+        """
+        form.instance.user = self.request.user
+        messages.success(self.request, 'Transaction updated successfully!')
+        return super().form_valid(form)
