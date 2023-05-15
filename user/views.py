@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -45,7 +45,7 @@ def log_in(request):
     if user:
         login(request, user)
         messages.success(request, 'Login successfull')
-        return render(request, 'home.html')
+        return redirect('home')
     else:
         messages.error(request, 'Incorrect username or password')
         return render(request, 'login.html')
