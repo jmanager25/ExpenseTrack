@@ -4,6 +4,7 @@ from .models import Transaction, Category
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 
 def landin_page(request):
@@ -21,7 +22,15 @@ def home(request):
     transaction list.
     """
     transactions = Transaction.objects.filter(user=request.user)
-    return render(request, "home.html", {"transactions": transactions})
+    paginator = Paginator(transactions, 5)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {
+        "transactions": transactions,
+        "page_obj": page_obj
+    }
+    return render(request, "home.html", context)
 
 
 class TransactionCreateView(CreateView):
@@ -74,4 +83,5 @@ class TransactionDeleteView(DeleteView):
 
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, self.success_message)
-        return super(TransactionDeleteView, self).delete(request, *args, **kwargs)
+        return super(TransactionDeleteView,
+                     self).delete(request, *args, **kwargs)
