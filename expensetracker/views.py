@@ -70,3 +70,8 @@ class TransactionDeleteView(DeleteView):
     template_name = "delete_transaction.html"
     context_object_name = 'transaction'
     success_url = reverse_lazy('home')
+    success_message = "Transaction deleted susccesfully"
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super(TransactionDeleteView, self).delete(request, *args, **kwargs)
