@@ -21,7 +21,8 @@ def home(request):
     View that returs the home page and allows user to see the
     transaction list.
     """
-    transactions = Transaction.objects.filter(user=request.user)
+    transactions = Transaction.objects.filter(
+        user=request.user).order_by('-date')
     paginator = Paginator(transactions, 5)
 
     page_number = request.GET.get('page')
