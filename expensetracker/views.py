@@ -60,3 +60,13 @@ class TransactionUpdateView(UpdateView):
         form.instance.user = self.request.user
         messages.success(self.request, 'Transaction updated successfully!')
         return super().form_valid(form)
+
+
+class TransactionDeleteView(DeleteView):
+    """
+    View that allows users to Delete existing transactions.
+    """
+    model = Transaction
+    template_name = "delete_transaction.html"
+    context_object_name = 'transaction'
+    success_url = reverse_lazy('home')

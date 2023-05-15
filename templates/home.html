@@ -37,6 +37,8 @@
                     <td>{{ transaction.description }}</td>
                     <td><a href="{% url 'edit_transaction' pk=transaction.id %}"
                             class="btn btn-sm btn-secondary">Edit</a>
+                        <a href="{% url 'delete_transaction' pk=transaction.id %}"
+                            class="btn btn-sm btn-danger">Delete</a>
                     </td>
                 </tr>
                 {% empty %}
