@@ -22,14 +22,14 @@
                 </tr>
             </thead>
             <tbody>
+                {% for saving_goal in saving_goals %}
                 <tr>
-                    {% for saving_goal in saving_goals %}
                     <td>{{ saving_goal.name }}</td>
                     <td>{{ saving_goal.description }}</td>
                     <td>{{ saving_goal.target_amount }}</td>
                     <td>{{ saving_goal.target_date }}</td>
                     <td>{{ saving_goal.progress }}</td>
-                    <td><a href="#" class="btn btn-sm btn-secondary">Edit</a>
+                    <td><a href="{% url 'edit_savings' pk=saving_goal.id %}" class="btn btn-sm btn-secondary">Edit</a>
                         <a href="#" class="btn btn-sm btn-danger">Delete</a>
                     </td>
                 </tr>
