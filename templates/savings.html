@@ -2,4 +2,44 @@
 
 {% block content %}
 
+{% include 'messages_alert.html' %}
+<!-- Saving-goals Section -->
+<section class="savings">
+    <h2 class="text-center mt-5">Savings</h2>
+    <div class="text-center mt-5">
+        <a href="#" class="btn btn-primary">Add Saving Goal</a>
+    </div>
+    <div class="container">
+        <table class="table mt-5 text-center">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Target Amount</th>
+                    <th>Target Date</th>
+                    <th>Progress</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="#" class="btn btn-sm btn-secondary">Edit</a>
+                        <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">No saving goals found</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</section>
+
 {% endblock %}
