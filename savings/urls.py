@@ -6,4 +6,6 @@ urlpatterns = [
     path('add/', views.SavingsCreateView.as_view(), name='add_savings'),
     path('edit/<int:pk>/', views.SavingsUpdateView.as_view(),
          name='edit_savings'),
+    path('delete/<int:pk>/', views.SavingsDeleteView.as_view(),
+         name='delete_savings')
 ]

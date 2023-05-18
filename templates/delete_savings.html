@@ -1,0 +1,15 @@
+{% extends "form_base.html" %}
+
+{% block content %}
+<main class="m-5">
+    <form method="post" class="mt-5">
+        {% csrf_token %}
+        <p class="text-center">Are you sure you want to delete {{ savings.name }}?</p>
+        {{ form }}
+        <div class="text-center">
+            <input class="btn btn-danger" type="submit" value="Yes, I am sure">
+            <a class="btn btn-secondary ms-2" href="{% url 'savings'%}">Cancel</a>
+        </div>
+    </form>
+</main>
+{% endblock %}

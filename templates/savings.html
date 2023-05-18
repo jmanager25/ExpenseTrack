@@ -30,7 +30,7 @@
                     <td>{{ saving_goal.target_date }}</td>
                     <td>{{ saving_goal.progress }}</td>
                     <td><a href="{% url 'edit_savings' pk=saving_goal.id %}" class="btn btn-sm btn-secondary">Edit</a>
-                        <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                        <a href="{% url 'delete_savings' pk=saving_goal.id %}" class="btn btn-sm btn-danger">Delete</a>
                     </td>
                 </tr>
                 {% empty %}

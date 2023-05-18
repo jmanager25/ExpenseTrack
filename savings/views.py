@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from expensetracker.models import Savings
 from django.urls import reverse_lazy
 from django.contrib import messages
@@ -57,3 +57,18 @@ class SavingsUpdateView(UpdateView):
         form.instance.user = self.request.user
         messages.success(self.request, 'Sanving goal updated successfully!')
         return super().form_valid(form)
+
+
+class SavingsDeleteView(DeleteView):
+    """
+    View that allows users to Delete existing Saving goals.
+    """
+    model = Savings
+    template_name = "delete_savings.html"
+    success_url = reverse_lazy('savings')
+    success_message = "Saving goal deleted susccesfully"
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super(SavingsDeleteView,
+                     self).delete(request, *args, **kwargs)
