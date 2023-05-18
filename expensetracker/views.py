@@ -61,7 +61,8 @@ class TransactionCreateView(CreateView):
     """
     model = Transaction
     template_name = "add_transaction.html"
-    fields = ['transaction_type', 'date', 'category', 'amount', 'description']
+    fields = ['transaction_type', 'date', 'category', 'amount',
+              'description', 'saving_goal']
     success_url = reverse_lazy('home')
 
     def form_valid(self, form):
