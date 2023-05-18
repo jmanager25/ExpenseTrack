@@ -23,20 +23,21 @@
             </thead>
             <tbody>
                 <tr>
-
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    {% for saving_goal in saving_goals %}
+                    <td>{{ saving_goal.name }}</td>
+                    <td>{{ saving_goal.description }}</td>
+                    <td>{{ saving_goal.target_amount }}</td>
+                    <td>{{ saving_goal.target_date }}</td>
+                    <td>{{ saving_goal.progress }}</td>
                     <td><a href="#" class="btn btn-sm btn-secondary">Edit</a>
                         <a href="#" class="btn btn-sm btn-danger">Delete</a>
                     </td>
                 </tr>
+                {% empty %}
                 <tr>
                     <td colspan="5">No saving goals found</td>
                 </tr>
-
+                {% endfor %}
             </tbody>
         </table>
     </div>

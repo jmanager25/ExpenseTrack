@@ -42,5 +42,7 @@ class Savings(models.Model):
     target_date = models.DateField(default=now)
     progress = models.DecimalField(max_digits=10, decimal_places=2)
 
+    objects = models.Manager()
+
     def __str__(self):
         return self.name

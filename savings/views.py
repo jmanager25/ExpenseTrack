@@ -6,7 +6,17 @@ from django.contrib import messages
 
 
 def savings(request):
-    return render(request, 'savings.html')
+    """
+    View that returs the saving page and allows user to see the
+    saving goals.
+    """
+    saving_goals = Savings.objects.filter(
+        user=request.user).order_by('target_date')
+
+    context = {
+        'saving_goals': saving_goals
+    }
+    return render(request, 'savings.html', context)
 
 
 class SavingsCreateView(CreateView):
