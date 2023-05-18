@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.db.models import Sum
 
 
 def landin_page(request):
@@ -23,14 +24,34 @@ def home(request):
     """
     transactions = Transaction.objects.filter(
         user=request.user).order_by('-date')
+
+    income = Transaction.objects.filter(
+        user=request.user, transaction_type='Income').aggregate(
+            Sum('amount'))['amount__sum'] or 0
+
+    expense = Transaction.objects.filter(
+        user=request.user, transaction_type='Expense').aggregate(
+            Sum('amount'))['amount__sum'] or 0
+
+    saving_goals = Transaction.objects.filter(
+        user=request.user, transaction_type='Saving_goal').aggregate(
+            Sum('amount'))['amount__sum'] or 0
+
+    balance = income - expense - saving_goals
+
     paginator = Paginator(transactions, 5)
 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context = {
         "transactions": transactions,
-        "page_obj": page_obj
+        "page_obj": page_obj,
+        "income": income,
+        "expense": expense,
+        "saving_goals": saving_goals,
+        "balance": balance
     }
+
     return render(request, "home.html", context)
 
 
