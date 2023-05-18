@@ -26,7 +26,7 @@ class SavingsCreateView(CreateView):
     model = Savings
     template_name = "add_savings.html"
     fields = ['name', 'description',
-              'target_amount', 'target_date', 'progress']
+              'target_amount', 'target_date']
     success_url = reverse_lazy('savings')
 
     def form_valid(self, form):
@@ -46,7 +46,7 @@ class SavingsUpdateView(UpdateView):
     model = Savings
     template_name = "edit_savings.html"
     fields = ['name', 'description',
-              'target_amount', 'target_date', 'progress']
+              'target_amount', 'target_date']
     success_url = reverse_lazy('savings')
 
     def form_valid(self, form):
