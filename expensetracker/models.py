@@ -16,6 +16,7 @@ class Savings(models.Model):
     description = models.CharField(max_length=200)
     target_amount = models.DecimalField(max_digits=10, decimal_places=2)
     target_date = models.DateField(default=now)
+    progress = models.DecimalField(max_digits=5, decimal_places=2, default=0)
 
     objects = models.Manager()
 
