@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'expensetracker',
     'savings',
+    'dashboard',
     'user'
 ]
 
