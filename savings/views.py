@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from expensetracker.models import Savings
+from expensetracker.models import Savings, Transaction
 from django.urls import reverse_lazy
 from django.contrib import messages
+from django.db.models import Sum
 
 
 def savings(request):
@@ -12,6 +13,15 @@ def savings(request):
     """
     saving_goals = Savings.objects.filter(
         user=request.user).order_by('target_date')
+
+    for saving_goal in saving_goals:
+        saved_money = Transaction.objects.filter(
+          user=request.user, saving_goal=saving_goal, transaction_type='Saving Goal').aggregate(
+            Sum('amount'))['amount__sum'] or 0
+
+        progress = (saved_money / saving_goal.target_amount) * 100
+        saving_goal.progress = progress
+        saving_goal.save()
 
     context = {
         'saving_goals': saving_goals

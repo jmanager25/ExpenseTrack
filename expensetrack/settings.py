@@ -32,7 +32,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '8000-jmanager25-expensetrack-fcz3ttnjzh.us2.codeanyapp.com',
+    '8000-jmanager25-expensetrack-jel1cfo0l2l.ws-eu97.gitpod.io',
     'expensetrack.herokuapp.com',
     'localhost',
 ]
