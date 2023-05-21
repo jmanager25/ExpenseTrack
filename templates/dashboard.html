@@ -1,5 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<main class="container">
+    <div class="row text-center mt-5">
+        <div class="col-md">
+          <h3>Expense</h3>
+          <div>{{ expense }}</div>
+        </div>
+        <div class="col-md">
+          <h3>Income</h3>
+          <div>{{ income }}</div>
+        </div>
+        <div class="col-md">
+          <h3>Savings</h3>
+          <div>{{ saving_goals }}</div>
+        </div>
+      </div>
+</main>
 {% endblock %}

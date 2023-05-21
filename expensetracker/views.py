@@ -34,7 +34,7 @@ def home(request):
             Sum('amount'))['amount__sum'] or 0
 
     saving_goals = Transaction.objects.filter(
-        user=request.user, transaction_type='Saving_goal').aggregate(
+        user=request.user, transaction_type='Saving Goal').aggregate(
             Sum('amount'))['amount__sum'] or 0
 
     balance = income - expense - saving_goals
