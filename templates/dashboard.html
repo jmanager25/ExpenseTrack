@@ -3,6 +3,26 @@
 {% block content %}
 <main class="container">
     <div class="row text-center mt-5">
+      <div class="col-2">
+        <label for="year">Select Year:</label>
+        <select class="form-control filter" id="year">
+          <option value="">All</option>
+          {% for year in years %}
+          <option value="{{ year.year }}">{{ year.year }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-2">
+        <label for="month">Select Month:</label>
+        <select class="form-control" id="month">
+          <option value="">All</option>
+          {% for month in months %}
+          <option value="{{ month.month }}">{{ month.month }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+    <div class="row text-center mt-5">
         <div class="col-md">
           <h3>Expense</h3>
           <div>{{ expense }}</div>
