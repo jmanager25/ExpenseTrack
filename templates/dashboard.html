@@ -35,6 +35,24 @@
           <h3>Savings</h3>
           <div>{{ saving_goals }}</div>
         </div>
-      </div>
+    </div>
+    <div class="row text-center mt-5">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Category</th>
+            <th scope="col">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for category in categories %}
+          <tr>
+            <td>{{ category.category__name }}</td>
+            <td>{{ category.amount__sum }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
 </main>
 {% endblock %}

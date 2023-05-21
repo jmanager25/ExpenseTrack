@@ -24,11 +24,16 @@ def dashboard(request):
     months = Transaction.objects.filter(user=request.user).annotate(
         month=ExtractMonth('date')).values('month')
 
+    # Get categories from the transactions
+    categories = Transaction.objects.filter(user=request.user).values('category__name').annotate(
+        Sum('amount')
+    )
     context = {
         "income": income,
         "expense": expense,
         "saving_goals": saving_goals,
         'years': years,
-        'months': months
+        'months': months,
+        'categories': categories
     }
     return render(request, 'dashboard.html', context)
