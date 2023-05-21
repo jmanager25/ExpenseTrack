@@ -5,22 +5,15 @@ from django.db.models.functions import ExtractYear, ExtractMonth
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from expensetracker.get_transactions import get_transactions
 
 
 @login_required(login_url='login')
 def dashboard(request):
-    # Get total income
-    income = Transaction.objects.filter(
-        user=request.user, transaction_type='Income').aggregate(
-            Sum('amount'))['amount__sum'] or 0
-    # Get total expense
-    expense = Transaction.objects.filter(
-        user=request.user, transaction_type='Expense').aggregate(
-            Sum('amount'))['amount__sum'] or 0
-    # Get total savings
-    saving_goals = Transaction.objects.filter(
-        user=request.user, transaction_type='Saving Goal').aggregate(
-            Sum('amount'))['amount__sum'] or 0
+    """
+    View that returs the dashboard page.
+    """
+    income, expense, saving_goals = get_transactions(request)
     
     # Get months and years from the transactions
     years = Transaction.objects.filter(user=request.user).annotate(

@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.db.models import Sum
+from expensetracker.get_transactions import get_transactions
 
 
 def landin_page(request):
@@ -26,18 +27,7 @@ def home(request):
     transactions = Transaction.objects.filter(
         user=request.user).order_by('-date')
 
-    income = Transaction.objects.filter(
-        user=request.user, transaction_type='Income').aggregate(
-            Sum('amount'))['amount__sum'] or 0
-
-    expense = Transaction.objects.filter(
-        user=request.user, transaction_type='Expense').aggregate(
-            Sum('amount'))['amount__sum'] or 0
-
-    saving_goals = Transaction.objects.filter(
-        user=request.user, transaction_type='Saving Goal').aggregate(
-            Sum('amount'))['amount__sum'] or 0
-
+    income, expense, saving_goals = get_transactions(request)
     balance = income - expense - saving_goals
 
     paginator = Paginator(transactions, 5)
