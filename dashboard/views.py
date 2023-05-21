@@ -2,6 +2,8 @@ from django.shortcuts import render
 from expensetracker.models import Transaction, Category, Savings
 from django.db.models import Sum
 from django.db.models.functions import ExtractYear, ExtractMonth
+from django.core.paginator import Paginator
+
 
 def dashboard(request):
     # Get total income
@@ -28,12 +30,17 @@ def dashboard(request):
     categories = Transaction.objects.filter(user=request.user).values('category__name').annotate(
         Sum('amount')
     )
+    # Pagination
+    paginator = Paginator(categories, 5)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     context = {
         "income": income,
         "expense": expense,
         "saving_goals": saving_goals,
         'years': years,
         'months': months,
-        'categories': categories
+        'categories': categories,
+        "page_obj": page_obj,
     }
     return render(request, 'dashboard.html', context)
