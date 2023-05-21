@@ -4,8 +4,11 @@ from expensetracker.models import Savings, Transaction
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.db.models import Sum
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
+@login_required(login_url='login')
 def savings(request):
     """
     View that returs the saving page and allows user to see the
@@ -29,7 +32,7 @@ def savings(request):
     return render(request, 'savings.html', context)
 
 
-class SavingsCreateView(CreateView):
+class SavingsCreateView(LoginRequiredMixin, CreateView):
     """
     View that allows users to add saving goals.
     """
@@ -38,6 +41,7 @@ class SavingsCreateView(CreateView):
     fields = ['name', 'description',
               'target_amount', 'target_date']
     success_url = reverse_lazy('savings')
+    login_url = 'login'
 
     def form_valid(self, form):
         """
@@ -49,7 +53,7 @@ class SavingsCreateView(CreateView):
         return super().form_valid(form)
 
 
-class SavingsUpdateView(UpdateView):
+class SavingsUpdateView(LoginRequiredMixin, UpdateView):
     """
     View that allows users to update existing Savings.
     """
@@ -58,6 +62,7 @@ class SavingsUpdateView(UpdateView):
     fields = ['name', 'description',
               'target_amount', 'target_date']
     success_url = reverse_lazy('savings')
+    login_url = 'login'
 
     def form_valid(self, form):
         """
@@ -69,7 +74,7 @@ class SavingsUpdateView(UpdateView):
         return super().form_valid(form)
 
 
-class SavingsDeleteView(DeleteView):
+class SavingsDeleteView(LoginRequiredMixin, DeleteView):
     """
     View that allows users to Delete existing Saving goals.
     """
@@ -77,6 +82,7 @@ class SavingsDeleteView(DeleteView):
     template_name = "delete_savings.html"
     success_url = reverse_lazy('savings')
     success_message = "Saving goal deleted susccesfully"
+    login_url = 'login'
 
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, self.success_message)

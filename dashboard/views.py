@@ -3,8 +3,11 @@ from expensetracker.models import Transaction, Category, Savings
 from django.db.models import Sum
 from django.db.models.functions import ExtractYear, ExtractMonth
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
+@login_required(login_url='login')
 def dashboard(request):
     # Get total income
     income = Transaction.objects.filter(

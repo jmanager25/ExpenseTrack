@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Transaction, Category
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.core.paginator import Paginator
@@ -55,7 +56,7 @@ def home(request):
     return render(request, "home.html", context)
 
 
-class TransactionCreateView(CreateView):
+class TransactionCreateView(LoginRequiredMixin, CreateView):
     """
     View that allows users to add transactions.
     """
@@ -64,6 +65,7 @@ class TransactionCreateView(CreateView):
     fields = ['transaction_type', 'date', 'category', 'amount',
               'description', 'saving_goal']
     success_url = reverse_lazy('home')
+    login_url = 'login'
 
     def form_valid(self, form):
         """
@@ -75,7 +77,7 @@ class TransactionCreateView(CreateView):
         return super().form_valid(form)
 
 
-class TransactionUpdateView(UpdateView):
+class TransactionUpdateView(LoginRequiredMixin, UpdateView):
     """
     View that allows users to update existing transactions.
     """
@@ -83,6 +85,7 @@ class TransactionUpdateView(UpdateView):
     template_name = "edit_transaction.html"
     fields = ['transaction_type', 'date', 'category', 'amount', 'description', 'saving_goal']
     success_url = reverse_lazy('home')
+    login_url = 'login'
 
     def form_valid(self, form):
         """
@@ -94,7 +97,7 @@ class TransactionUpdateView(UpdateView):
         return super().form_valid(form)
 
 
-class TransactionDeleteView(DeleteView):
+class TransactionDeleteView(LoginRequiredMixin, DeleteView):
     """
     View that allows users to Delete existing transactions.
     """
@@ -102,6 +105,7 @@ class TransactionDeleteView(DeleteView):
     template_name = "delete_transaction.html"
     context_object_name = 'transaction'
     success_url = reverse_lazy('home')
+    login_url = 'login'
     success_message = "Transaction deleted susccesfully"
 
     def delete(self, request, *args, **kwargs):
