@@ -3,7 +3,7 @@ from django.db.models import Sum
 
 def get_transactions(request):
     """
-    gets the transaction tupes total amount.
+    gets the transaction types total amount.
     """
     # Get total income
     income = Transaction.objects.filter(

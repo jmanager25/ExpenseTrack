@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'expensetracker',
     'savings',
     'dashboard',
-    'user'
+    'user',
+    'category'
 ]
 
 MIDDLEWARE = [
