@@ -36,6 +36,12 @@
           <div>{{ saving_goals }}</div>
         </div>
     </div>
+    <div class="row">
+      <form action="{% url 'dashboard' %}" method="GET" class="mt-5">
+        {{ form.as_p }}
+        <input class="btn btn-primary btn-sm mt-1" type="submit" value="Submit">
+    </form>
+    </div>
     <div class="row text-center mt-5">
       <table class="table">
         <thead>

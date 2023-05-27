@@ -6,6 +6,7 @@ from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from expensetracker.get_transactions import get_transactions
+from dashboard.filters import TransactionFilter
 
 
 @login_required(login_url='login')
@@ -26,6 +27,8 @@ def dashboard(request):
     categories = Transaction.objects.filter(user=request.user).values('category__name').annotate(
         Sum('amount')
     )
+    # Filter the categories
+    transaction_filter = TransactionFilter(request.GET, queryset=categories)
     # Pagination
     paginator = Paginator(categories, 5)
     page_number = request.GET.get('page')
@@ -36,7 +39,8 @@ def dashboard(request):
         "saving_goals": saving_goals,
         'years': years,
         'months': months,
-        'categories': categories,
+        'categories': transaction_filter.qs,
         "page_obj": page_obj,
+        'form': transaction_filter.form
     }
     return render(request, 'dashboard.html', context)
