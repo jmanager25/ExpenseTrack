@@ -12,7 +12,13 @@ def category(request):
     """
     View that returs the categories page.
     """
-    return render(request, 'category.html')
+
+    categories = Category.objects.all()
+
+    context = {
+        'categories': categories
+    }
+    return render(request, 'category.html', context)
 
 
 class CategoryCreateView(LoginRequiredMixin, CreateView):
