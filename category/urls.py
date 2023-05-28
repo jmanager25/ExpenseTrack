@@ -7,4 +7,6 @@ urlpatterns = [
          name='add_category'),
     path('edit/<int:pk>/', views.CategoryUpdateView.as_view(),
          name='edit_category'),
+    path('delete/<int:pk>/', views.CategoryDeleteView.as_view(),
+         name='delete_category')
 ]

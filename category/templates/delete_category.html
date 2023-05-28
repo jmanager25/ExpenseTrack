@@ -4,10 +4,10 @@
 <main class="m-5">
     <form method="post" class="mt-5">
         {% csrf_token %}
-        <p class="text-center">Are you sure you want to delete {{ transaction.transaction_type }}?</p>       
+        <p class="text-center">Are you sure you want to delete {{ category.name }}?</p>
         <div class="text-center">
             <input class="btn btn-danger" type="submit" value="Yes, I am sure">
-            <a class="btn btn-secondary ms-2" href="{% url 'home'%}">Cancel</a>
+            <a class="btn btn-secondary ms-2" href="{% url 'category'%}">Cancel</a>
         </div>
     </form>
 </main>

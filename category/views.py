@@ -52,3 +52,19 @@ class CategoryUpdateView(LoginRequiredMixin, UpdateView):
         form.instance.user = self.request.user
         messages.success(self.request, 'Category updated successfully!')
         return super().form_valid(form)
+
+
+class CategoryDeleteView(LoginRequiredMixin, DeleteView):
+    """
+    View that allows users to Delete existing categories.
+    """
+    model = Category
+    template_name = "delete_category.html"
+    success_url = reverse_lazy('category')
+    login_url = 'login'
+    success_message = "Category deleted susccesfully"
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super(CategoryDeleteView,
+                     self).delete(request, *args, **kwargs)
