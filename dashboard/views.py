@@ -21,7 +21,7 @@ def dashboard(request):
         Sum('amount')
     )
     # Filter the categories
-    transaction_filter = TransactionFilter(request.GET, queryset=categories)
+    transaction_filter = TransactionFilter(request.GET, queryset=categories, user=request.user)
 
     # Pagination
     paginator = Paginator(categories, 5)
