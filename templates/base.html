@@ -20,31 +20,21 @@
     <title>Expense Tracker</title>
 </head>
 
-<body class="d-flex flex-column h-100 main-bg">
+<body>
 
     <header>
         <!-- Navigation -->
         {% include 'navbar.html' %}
     </header>
 
-    <main class="flex-shrink-0 main-bg">
+    <main>
         {% block content %}
         <!-- Content here -->
         {% endblock content %}
     </main>
 
     <!-- Footer -->
-    <footer class="mt-auto py-3 text-center">
-        <!-- Social Links-->
-        <a href="https://twitter.com" class="social" target="_blank" rel="noopener"
-            aria-label="visit our twitter page (opens in a new tab)"><i class="fab fa-twitter ms-3"></i></a>
-        <a href="https://instagram.com" class="social" target="_blank" rel="noopener"
-            aria-label="visit our instagram page (opens in a new tab)"><i class="fab fa-instagram ms-3"></i></a>
-        <a href="https://youtube.com" class="social" target="_blank" rel="noopener"
-            aria-label="visit our youtube page (opens in a new tab)"><i class="fab fa-youtube ms-3"></i></a>
-        <a href="https://github.com/jmanager25" class="social" target="_blank" rel="noopener"
-            aria-label="visit our github page (opens in a new tab)"><i class="fab fa-github ms-3"></i></a>
-    </footer>
+    {% include 'footer.html' %}
 
 </body>
 
