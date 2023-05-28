@@ -16,15 +16,16 @@ def dashboard(request):
 
     income, expense, saving_goals = get_transactions(request)
     
-    # Get categories from the transactions
+    # Get categories name an amount from the transactions
     categories = Transaction.objects.filter(user=request.user).values('category__name').annotate(
         Sum('amount')
     )
+
     # Filter the categories
     transaction_filter = TransactionFilter(request.GET, queryset=categories, user=request.user)
 
     # Pagination
-    paginator = Paginator(categories, 5)
+    paginator = Paginator(transaction_filter.qs, 5)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     
@@ -32,7 +33,7 @@ def dashboard(request):
         "income": income,
         "expense": expense,
         "saving_goals": saving_goals,
-        'categories': transaction_filter.qs,
+        'categories': categories,
         "page_obj": page_obj,
         'form': transaction_filter.form
     }
