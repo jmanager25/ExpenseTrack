@@ -24,7 +24,7 @@ def category(request):
 
 class CategoryCreateView(LoginRequiredMixin, CreateView):
     """
-    View that allows users to create category.
+    View that allow users to create category.
     """
     model = Category
     template_name = "add_category.html"
@@ -35,4 +35,20 @@ class CategoryCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         messages.success(self.request, 'Category created successfully!')
+        return super().form_valid(form)
+
+
+class CategoryUpdateView(LoginRequiredMixin, UpdateView):
+    """
+    View that allow users to update existing categories.
+    """
+    model = Category
+    template_name = "edit_category.html"
+    fields = ['name']
+    success_url = reverse_lazy('category')
+    login_url = 'login'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        messages.success(self.request, 'Category updated successfully!')
         return super().form_valid(form)
