@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Transaction, Category
+from .models import Transaction, Category, Savings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
@@ -57,6 +57,16 @@ class TransactionCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('home')
     login_url = 'login'
 
+    def get_form(self, *args, **kwargs):
+        """
+        Customizes the form to display only the categories and saving goals 
+        created by the current user.
+        """
+        form = super().get_form(*args, **kwargs)
+        form.fields['category'].queryset = Category.objects.filter(user=self.request.user)
+        form.fields['saving_goal'].queryset = Savings.objects.filter(user=self.request.user)
+        return form
+
     def form_valid(self, form):
         """
         Ensures that the user who submitted the form is associated with the
@@ -76,6 +86,16 @@ class TransactionUpdateView(LoginRequiredMixin, UpdateView):
     fields = ['transaction_type', 'date', 'category', 'amount', 'description', 'saving_goal']
     success_url = reverse_lazy('home')
     login_url = 'login'
+
+    def get_form(self, *args, **kwargs):
+        """
+        Customizes the form to display only the categories and saving goals 
+        created by the current user.
+        """
+        form = super().get_form(*args, **kwargs)
+        form.fields['category'].queryset = Category.objects.filter(user=self.request.user)
+        form.fields['saving_goal'].queryset = Savings.objects.filter(user=self.request.user)
+        return form
 
     def form_valid(self, form):
         """
