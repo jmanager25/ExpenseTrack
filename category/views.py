@@ -13,7 +13,8 @@ def category(request):
     View that returs the categories page.
     """
 
-    categories = Category.objects.all()
+    categories = Category.objects.filter(
+        user=request.user)
 
     context = {
         'categories': categories

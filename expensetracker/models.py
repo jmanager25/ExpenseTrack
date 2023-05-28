@@ -4,6 +4,7 @@ from django.utils.timezone import now
 
 
 class Category(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=200)
 
     def __str__(self):
