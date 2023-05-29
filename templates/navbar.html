@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
         <a {% if user.is_authenticated %} href="{% url 'home' %}" {% else %} href="{% url 'landing_page' %}" {% endif %}
             class="navbar-brand">Expense Tracker</a>
