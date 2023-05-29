@@ -1,7 +1,6 @@
-{% extends "form_base.html" %}
+{% extends "base.html" %}
 
 {% block content %}
-<main class="m-5">
     <form method="post" class="mt-5">
         {% csrf_token %}
         <p class="text-center">Are you sure you want to delete {{ category.name }}?</p>
@@ -10,5 +9,4 @@
             <a class="btn btn-secondary ms-2" href="{% url 'category'%}">Cancel</a>
         </div>
     </form>
-</main>
 {% endblock %}
