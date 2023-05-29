@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+from django.contrib.messages import constants as messages
 from pathlib import Path
 
 import os
@@ -20,6 +21,11 @@ if os.path.isfile('env.py'):
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+
+# Apply the danger tag to messages with messages.ERROR
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
 
 
 # Quick-start development settings - unsuitable for production
