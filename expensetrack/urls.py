@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from expensetracker import views
+from django.conf.urls.static import static
+from django.conf import settings
 
 
 urlpatterns = [
@@ -27,4 +29,4 @@ urlpatterns = [
     path('account/', include('user.urls')),
     path('dashboard/', include('dashboard.urls')),
     path('category/', include('category.urls')),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
