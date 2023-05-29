@@ -1,5 +1,23 @@
+/* Google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap');
+
 body {
     min-height: 100vh;
+    background-color: #FFFFFF;
+    font-family: roboto, sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: montserrat, sans-serif;
+}
+
+.btn {
+    background-color: #018ABE;
+    color: #FFFFFF;
+}
+
+#danger {
+    background-color: red;
 }
 
 /* Navbar */
@@ -7,14 +25,28 @@ body {
     flex-grow: unset;
 }
 
-/* Balance Section */
-
-.balance {
-    max-width: 50%;
-}
-
 /* register form */
-
 #register-btn {
     width: -webkit-fill-available;
+}
+
+/* Transaction Page */
+.balance {
+    max-width: 50%;
+    background-color: #018ABE;
+    color: #FFFFFF;
+}
+
+@media screen and (max-width: 991px){
+
+    .edit {
+        margin-bottom: 0.5rem;
+    }
+}
+    
+@media screen and (max-width: 341px){
+    
+    .add-transaction {
+        margin-bottom: 0.5rem;
+    }
 }

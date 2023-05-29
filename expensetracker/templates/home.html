@@ -4,19 +4,20 @@
 
 <!-- Balance Section -->
 <section class="card balance m-auto mt-5">
-    <duv class="card-body text-center text">
-        {{ balance }}
+    <duv class="card-body text-center">
+        {{ balance }}€
     </duv>
 </section>
 
 <!-- Transaction Section -->
-<section class="transaction">
-    <h2 class="text-center mt-5">Transaction</h2>
+<section class="transaction container-fluid">
+    <h1 class="text-center mt-5">Transaction</h1>
     <div class="text-center mt-5">
-        <a href="{% url 'add_transaction' %}" class="btn btn-primary">Add Transaction</a>
-        <a href="{% url 'add_category' %}" class="btn btn-primary">Create Category</a>
+        <a href="{% url 'add_transaction' %}" class="btn add-transaction">Add Transaction</a>
+        <a href="{% url 'add_category' %}" class="btn">Create Category</a>
     </div>
     <div class="container">
+       <div class="table-responsive">
         <table class="table mt-5 text-center">
             <thead>
                 <tr>
@@ -34,12 +35,12 @@
                         <td>{{ transaction.transaction_type }}</td>
                         <td>{{ transaction.date }}</td>
                         <td>{{ transaction.category.name }}</td>
-                        <td>{{ transaction.amount }}</td>
+                        <td>{{ transaction.amount }}€</td>
                         <td>{{ transaction.description }}</td>
                         <td><a href="{% url 'edit_transaction' pk=transaction.id %}"
-                            class="btn btn-sm btn-secondary">Edit</a>
+                            class="btn btn-sm edit">Edit</a>
                             <a href="{% url 'delete_transaction' pk=transaction.id %}"
-                            class="btn btn-sm btn-danger">Delete</a>
+                            class="btn btn-sm" id="danger">Delete</a>
                         </td>
                     </tr>
                 {% empty %}
@@ -49,6 +50,7 @@
                 {% endfor %}
             </tbody>
         </table>
+       </div>
         <nav aria-label="Page navigation">
             <ul class="pagination justify-content-center">
                 {% if page_obj.has_previous %}
