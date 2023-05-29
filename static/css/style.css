@@ -5,6 +5,7 @@ body {
     min-height: 100vh;
     background-color: #FFFFFF;
     font-family: roboto, sans-serif;
+    padding-bottom: 70px;
 }
 
 h1, h2, h3 {
@@ -65,4 +66,23 @@ h1, h2, h3 {
     .edit-savings {
         margin-bottom: 0.5rem;
     }
+}
+
+/* Footer */
+footer {
+   background-color: #018ABE;
+}
+
+footer a {
+    text-decoration: none;
+}
+
+footer a i {
+    font-size: 1.5rem;
+    color: #FFFFFF;
+}
+
+footer a i:hover {
+    color: #018ABE;
+    background-color: #FFFFFF;
 }
