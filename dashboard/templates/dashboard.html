@@ -1,24 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class="row text-center mt-5">
-    <div class="col-md">
+  <div class="row text-center mt-5 justify-content-center">
+    <div class="col-sm dasboard-totals">
       <h3>Expense</h3>
-      <div>{{ expense }}</div>
+      <div class="">{{ expense }}€</div>
     </div>
-    <div class="col-md">
+    <div class="col-sm dasboard-totals">
       <h3>Income</h3>
-      <div>{{ income }}</div>
+      <div>{{ income }}€</div>
       </div>
-    <div class="col-md">
+    <div class="col-sm dasboard-totals">
       <h3>Savings</h3>
-      <div>{{ saving_goals }}</div>
+      <div>{{ saving_goals }}€</div>
     </div>
   </div>
   <div class="row">
     <form action="{% url 'dashboard' %}" method="GET" class="mt-5">
       {{ form.as_p }}
-      <input class="btn btn-primary btn-sm mt-1" type="submit" value="Filter">
+      <input class="btn btn-sm mt-1" type="submit" value="Filter">
     </form>
   </div>
   <div class="row text-center mt-5">
@@ -33,7 +33,7 @@
         {% for category in page_obj %}
           <tr>
             <td>{{ category.category__name }}</td>
-            <td>{{ category.amount__sum }}</td>
+            <td>{{ category.amount__sum }}€</td>
           </tr>
         {% empty %}
           <tr>
