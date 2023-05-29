@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from expensetracker.models import Category
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -48,6 +48,17 @@ class CategoryUpdateView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('category')
     login_url = 'login'
 
+    def dispatch(self, request, *args, **kwargs):
+        """
+        Checks if the user is the owner of the category.
+        """
+        obj = self.get_object()
+        if obj.user != self.request.user:
+            messages.error(request, "Sorry, You dont have permission to access this category.")
+            return redirect('home')
+
+        return super().dispatch(request, *args, **kwargs)
+
     def form_valid(self, form):
         form.instance.user = self.request.user
         messages.success(self.request, 'Category updated successfully!')
@@ -63,6 +74,17 @@ class CategoryDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('category')
     login_url = 'login'
     success_message = "Category deleted susccesfully"
+
+    def dispatch(self, request, *args, **kwargs):
+        """
+        Checks if the user is the owner of the category.
+        """
+        obj = self.get_object()
+        if obj.user != self.request.user:
+            messages.error(request, "Sorry, You dont have permission to access this category.")
+            return redirect('home')
+
+        return super().dispatch(request, *args, **kwargs)
 
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, self.success_message)

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Transaction, Category, Savings
 from django.contrib.auth.decorators import login_required
@@ -87,6 +87,17 @@ class TransactionUpdateView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('home')
     login_url = 'login'
 
+    def dispatch(self, request, *args, **kwargs):
+        """
+        Checks if the user is the owner of the transaction.
+        """
+        obj = self.get_object()
+        if obj.user != self.request.user:
+            messages.error(request, "Sorry, You dont have permission to access this transaction.")
+            return redirect('home')
+
+        return super().dispatch(request, *args, **kwargs)
+
     def get_form(self, *args, **kwargs):
         """
         Customizes the form to display only the categories and saving goals 
@@ -117,6 +128,17 @@ class TransactionDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('home')
     login_url = 'login'
     success_message = "Transaction deleted susccesfully"
+
+    def dispatch(self, request, *args, **kwargs):
+        """
+        Checks if the user is the owner of the transaction.
+        """
+        obj = self.get_object()
+        if obj.user != self.request.user:
+            messages.error(request, "Sorry, You dont have permission to access this transaction.")
+            return redirect('home')
+
+        return super().dispatch(request, *args, **kwargs)
 
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, self.success_message)

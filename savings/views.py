@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from expensetracker.models import Savings, Transaction
 from django.urls import reverse_lazy
@@ -64,6 +64,17 @@ class SavingsUpdateView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('savings')
     login_url = 'login'
 
+    def dispatch(self, request, *args, **kwargs):
+        """
+        Checks if the user is the owner of the saving goal.
+        """
+        obj = self.get_object()
+        if obj.user != self.request.user:
+            messages.error(request, "Sorry, You dont have permission to access this Saving goal.")
+            return redirect('home')
+
+        return super().dispatch(request, *args, **kwargs)
+
     def form_valid(self, form):
         """
         Ensures that the user who submit the form is associated with the
@@ -83,6 +94,17 @@ class SavingsDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('savings')
     success_message = "Saving goal deleted susccesfully"
     login_url = 'login'
+
+    def dispatch(self, request, *args, **kwargs):
+        """
+        Checks if the user is the owner of the saving goal.
+        """
+        obj = self.get_object()
+        if obj.user != self.request.user:
+            messages.error(request, "Sorry, You dont have permission to access this Saving goal.")
+            return redirect('home')
+
+        return super().dispatch(request, *args, **kwargs)
 
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, self.success_message)
