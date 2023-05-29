@@ -1,31 +1,33 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="card">
-        <div class="card-title">
-            <h1 class="text-center mt-3">Login</h1>
-        </div>
-        <div class="card-body">
-            <form action="{% url 'login' %}" method="POST">{% csrf_token %}
-                <div>
-                    <label for="username" class="form-label">Username</label>
-                    <div class="input-group">
-                        <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
-                        <input type="text" class="form-control" id="password" name="username" placeholder="username"
-                            required>
-                    </div>
+   <div class="form-container d-flex align-items-center justify-content-center">
+        <div class="card">
+            <div class="card-title">
+                <h1 class="text-center mt-3">Login</h1>
+            </div>
+            <div class="card-body">
+                <form action="{% url 'login' %}" method="POST">{% csrf_token %}
                     <div>
-                        <label for="password" class="form-label">Password</label>
+                        <label for="username" class="form-label">Username</label>
                         <div class="input-group">
-                            <span class="input-group-text"><i class="fa-solid fa-unlock-keyhole"></i></span>
-                            <input type="password" class="form-control" id="password" name="password" required>
+                            <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+                            <input type="text" class="form-control" id="password" name="username" placeholder="username"
+                                required>
+                        </div>
+                        <div>
+                            <label for="password" class="form-label">Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fa-solid fa-unlock-keyhole"></i></span>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                        </div>
+                        <div class="text-center mt-3">
+                            <input class="btn btn-primary" id="register-btn" type="submit" value="Login">
                         </div>
                     </div>
-                    <div class="text-center mt-3">
-                        <input class="btn btn-primary" id="register-btn" type="submit" value="Login">
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
+   </div>
 {% endblock %}

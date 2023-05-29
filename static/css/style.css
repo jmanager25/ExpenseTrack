@@ -8,6 +8,14 @@ body {
     padding-bottom: 70px;
 }
 
+main {
+    min-height: 600px;
+}
+
+.form-container {
+    min-height: 600px;
+}
+
 h1, h2, h3 {
     font-family: montserrat, sans-serif;
 }
