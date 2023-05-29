@@ -4,12 +4,14 @@
 
 <h1 class="text-center mt-3">Categories list</h1>
 
-<ul class="list-group list-group-flush">
+<ul class="list-group list-group-flush ">
     {% for category in categories %}
     <li class="list-group-item">
-        <strong>{{ category }}</strong>
-        <a href="{% url 'edit_category' pk=category.id %}" class="btn btn-sm btn-secondary">Edit</a>
-        <a href="{% url 'delete_category' pk=category.id %}" class="btn btn-sm btn-danger">Delete</a>
+        {{ category }}
+        <div>
+            <a href="{% url 'edit_category' pk=category.id %}" class="btn btn-sm">Edit</a>
+            <a href="{% url 'delete_category' pk=category.id %}" class="btn btn-sm" id="danger">Delete</a>
+        </div>
     </li>
     {% endfor %}
 </ul>
