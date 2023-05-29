@@ -2,7 +2,6 @@
 
 {% block content %}
 
-{% include 'messages_alert.html' %}
 <!-- Saving-goals Section -->
 <section class="savings">
     <h2 class="text-center mt-5">Savings</h2>
@@ -23,15 +22,22 @@
             </thead>
             <tbody>
                 {% for saving_goal in saving_goals %}
-                <tr>
-                    <td>{{ saving_goal.name }}</td>
-                    <td>{{ saving_goal.description }}</td>
-                    <td>{{ saving_goal.target_amount }}</td>
-                    <td>{{ saving_goal.target_date }}</td>
-                    <td>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: {{ saving_goal.progress }}%;"  aria-valuenow="{{ saving_goal.progress }}" aria-valuemin="0" aria-valuemax="100">{{ saving_goal.progress }}%</div>
-                        </div>
+                    <tr>
+                        <td>{{ saving_goal.name }}</td>
+                        <td>{{ saving_goal.description }}</td>
+                        <td>{{ saving_goal.target_amount }}</td>
+                        <td>{{ saving_goal.target_date }}</td>
+                        <td>
+                            <div class="progress">
+                                <div 
+                                    class="progress-bar" 
+                                    role="progressbar" 
+                                    style="width: {{ saving_goal.progress }}%;"  
+                                    aria-valuenow="{{ saving_goal.progress }}"
+                                    aria-valuemin="0" 
+                                    aria-valuemax="100">{{ saving_goal.progress }}%
+                                </div>
+                            </div>
                     </td>
                     <td><a href="{% url 'edit_savings' pk=saving_goal.id %}" class="btn btn-sm btn-secondary">Edit</a>
                         <a href="{% url 'delete_savings' pk=saving_goal.id %}" class="btn btn-sm btn-danger">Delete</a>
