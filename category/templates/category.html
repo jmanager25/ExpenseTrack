@@ -11,7 +11,7 @@
 </div>
 
 <ul class="list-group list-group-flush ">
-    {% for category in categories %}
+    {% for category in page_obj %}
     <li class="list-group-item">
         {{ category }}
         <div>
@@ -21,5 +21,6 @@
     </li>
     {% endfor %}
 </ul>
+{% include 'pagination.html' %}
 
 {% endblock content %}

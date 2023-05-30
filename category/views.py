@@ -5,6 +5,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 
 @login_required(login_url='login')
@@ -16,8 +17,14 @@ def category(request):
     categories = Category.objects.filter(
         user=request.user)
 
+    paginator = Paginator(categories, 8)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     context = {
-        'categories': categories
+        'categories': categories,
+        "page_obj": page_obj,
     }
     return render(request, 'category.html', context)
 
