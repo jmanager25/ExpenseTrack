@@ -35,7 +35,7 @@ MESSAGE_TAGS = {
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = [
     '8000-jmanager25-expensetrack-jel1cfo0l2l.ws-eu97.gitpod.io',
