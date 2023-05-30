@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+{% load static %}
+
     <form method="post" class="mt-5">
         {% csrf_token %}
         <p class="text-center">Are you sure you want to delete {{ transaction.transaction_type }}?</p>       

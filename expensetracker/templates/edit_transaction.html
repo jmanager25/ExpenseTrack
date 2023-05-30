@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+{% load static %}
+
     <h1 class="text-center">Edit Transaction</h1>
     <form method="post" class="mt-5">
         {% csrf_token %}
