@@ -43,6 +43,10 @@ h1, h2, h3 {
     color: #FFFFFF;
 }
 
+.navbar-toggler {
+    background-color: #FFFFFF;
+    color: #018ABE;
+}
 /* register form */
 #register-btn {
     width: -webkit-fill-available;
