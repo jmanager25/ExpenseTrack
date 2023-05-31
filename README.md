@@ -279,6 +279,21 @@ In future inplementations I would like to:
 
 ## Technologies Used
 
+* HTML
+* CSS
+* Python
+* Django
+* Bootstrap
+* Git
+* GitHub
+* Heroku
+* Gitpod
+* Claudinary
+* Am I Responsive
+* ElephantSQL
+* PostgreSQL
+* LucidChart Diagram
+
 ## Testing
 
 [TESTING.md](TESTING.md)
@@ -302,3 +317,9 @@ In future inplementations I would like to:
 * ![Using the Django authentication system](https://www.tellow.nl/)
 
 ## Acknowledgments
+
+I would like to thank the following people:
+
+* My girlfriend for her patience and support while I was working on the project
+* My mentor, Mitko, for his guidance throughout the project
+* My collegues from code institute for the support and motivation on Slack
