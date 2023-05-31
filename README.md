@@ -132,9 +132,144 @@ To maintain a clear project structure, I linked related issues to their correspo
 
 ### Existing Features
 
+#### Landing Page 
 
+The landing page is the first page users see when they visit the website. It has a picture slideshow with four images, showing what the website looks like. There is also text that explains what the website is all about. It helps users understand what they can do on the website and why it's useful. The goal is to make users interested and want to explore more.
+
+![Landing Page](documentation/features/landin-page.png)
+
+#### Sign Up 
+
+The sign-up page enables users to register by providing the username, email address, and password.
+
+![Sign Up](documentation/features/sign-up.png)
+
+#### Login 
+
+The login page enables users to access their accounts by entering their username and password.
+
+![Login](documentation/features/login.png)
+
+#### Navigation Bar 
+
+The navigation bar is located at the top of the page and adapts based on the user's login status.
+When a user is logged in, the navigation bar displays the site's name along with links to important pages 
+such as the transaction page, dashboard page, savings page, and categories page. It also shows the username of 
+the logged-in user. Additionally, a logout button is provided to allow users to securely log out of their accounts.
+
+On the other hand, if a user is not logged in, the navigation bar still shows the site's name but only includes buttons 
+for logging in and signing up.
+
+![Navbar](documentation/features/navbar-out.png)
+![Navbar](documentation/features/navbar-in.png)
+
+#### Footer
+
+The footer section of the website displays social links.
+
+![Footer](documentation/features/footer.png)
+
+#### Transaction Page
+
+Once users log in, the transaction page serves as their "home" page. Here, they can view important details such as their balance and the existing transactions. Additionally, the page includes buttons that allow users to add new transactions and categories.
+
+![Transaction Page](documentation/features/transaction-page.png)
+
+#### Add Transaction
+
+The add transaction page allows users to enter new transactions with the following details: transaction type (income, expense, or saving goals), date, category, amount, description, and an optional selection for a saving goal if the transaction type is saving goals.
+
+![Add Transaction](documentation/features/add-transaction.png)
+
+#### Edit Transaction
+
+The edit transaction page enables users to modify existing transactions.
+
+![Edit Transaction](documentation/features/edit-transaction.png)
+
+#### Dashboard Page
+
+The dashboard shows users a summary of their finances. They can view their total expenses, income, and savings, as well as a list of categories with the respective amounts. There's also a filter option to display amount for a specific category.
+
+![Dashboard](documentation/features/dashboard.png)
+
+#### Savings Page
+
+The savings page showcases the saving goals created by the user. On this page, users can view important details such as the name, description, target amount, target date, and progress of their savings goals.
+
+![Savings](documentation/features/savings.png)
+
+#### Add Savings
+
+The add savings page enables users to create new saving goals.
+
+![Add Savings](documentation/features/add-savings.png)
+
+#### Edit Savings
+
+The edit savings page enables users to update existing saving goals.
+
+![Edit Savings](documentation/features/edit-savings.png)
+
+#### Categories Page
+
+The categories page presents users with a list of categories they have created, there is also a 
+button that allows users to add new categories.
+
+![Categories Page](documentation/features/categories-page.png)
+
+#### Add Category
+
+The add category page enables users to create new category.
+
+![Add Category](documentation/features/add-category.png)
+
+#### Edit Category
+
+The edit category page enables users to update existing category.
+
+![Edit Category](documentation/features/edit-category.png)
+
+
+#### Delete Transaction, Category or Saving Goal
+
+When users click the delete button on a transaction, saving goal, or category, a confirmation page is displayed, asking them to confirm their decision to delete the respective item. The page presents the name of the item to be deleted and provides two options:
+
+* "Yes, I am sure": If users click "Yes" the item will be permanently deleted from the database.
+* "Cancel": If users click "Cancel," they will be redirected back to the respective page without deleting the item.
+
+This confirmation step adds an extra layer of caution to ensure that users do not accidentally delete important data.
+
+![Delete Item](documentation/features/delete.png)
+
+#### Confirmation Messages
+
+Confirmation messages are displayed to users for various actions to provide feedback and ensure a seamless user experience. Users will see confirmation messages in the following scenarios:
+
+* Successful Login: After successfully logging in, users will receive a confirmation message indicating their successful login.
+* Logout: When users successfully log out, a confirmation message will be displayed, confirming that they have been securely logged out of their account.
+* Create Item: After creating a new item (such as a transaction, saving goal, or category), users will receive a confirmation message confirming the successful creation of the item.
+* Edit Item: Upon successfully editing an item, users will be presented with a confirmation message indicating that the changes have been saved and applied to the item.
+* Delete Item: When an item is successfully deleted (such as a transaction, saving goal, or category), users will see a confirmation message confirming the deletion.
+
+These confirmation messages provide users with clear feedback and assurance that their actions have been executed successfully.
+
+![Confirmation Message](documentation/features/confirmation1.png)
+![Confirmation Message](documentation/features/confirmation2.png)
+![Confirmation Message](documentation/features/confirmation3.png)
+![Confirmation Message](documentation/features/confirmation4.png)
+![Confirmation Message](documentation/features/confirmation5.png)
 
 ### Future Implementations
+
+In future inplementations I would like to:
+
+* Password Reset: Implement a feature that allows users to reset their password if they forget it.
+* Social Account Login: Provide users with the option to log in using their social media accounts.
+* Color Palette: Incorporate the specified color palette into the website design, creating a visually appealing user interface.
+* Financial Data Filtering: Enable users to filter their financial data by date, specifically by year and month, on the dashboard.
+* Visual Graphics: Implement visually appealing graphics and charts to present users with a visual representation of their financial situation.
+* Styling Add and Edit Forms: Style the add and edit forms for transactions, savings goals, and categories, making them visually appealing and user-friendly.
 
 ## Deployment and Local Development
 
