@@ -103,15 +103,36 @@ The initial wireframes provided a basic layout, but as development progressed, c
 and some features were removed and postponed for future implementation.
 
 ![Landing Page](documentation/wireframes/landing-page.png)
-![Landing Page](documentation/wireframes/login-page.png)
-![Landing Page](documentation/wireframes/registration-page.png)
-![Landing Page](documentation/wireframes/transactions-page.png)
-![Landing Page](documentation/wireframes/savings-page.png)
-![Landing Page](documentation/wireframes/dashboard.png)
+![Login Page](documentation/wireframes/login-page.png)
+![Registration Page](documentation/wireframes/registration-page.png)
+![Transaction Page](documentation/wireframes/transactions-page.png)
+![Savings Page](documentation/wireframes/savings-page.png)
+![Dashboard](documentation/wireframes/dashboard.png)
+
+## Agile Development 
+
+This project was developed using agile development principles. 
+
+I used [GitHub Project](https://github.com/users/jmanager25/projects/1/views/1) as an agile tool to manage the project's
+progress using agile principles. With GitHub Issues, I created epics and user stories and each user stories included acceptance criterias, 
+to determine when that user story was completed successfully. I also defined tasks within the user stories, defining specific actions i needed
+to take to fulfill the acceptance criteria.
+
+To prioritize the work effectively, I used MOSCOW prioritization. These allowed me to categorize issues into four main groups: 
+"must have" features that were critical for the project, "could have" features that were desirable but not essential, 
+"should have" features that had moderate importance, and "won't have" features that were intentionally excluded.
+
+To maintain a clear project structure, I linked related issues to their corresponding epics. This provided a high-level view of the project's progress and helped me stay organized throughout the development process.
+
+![GitHub Project](documentation/readme/github-projects.png)
+![Epic](documentation/readme/epic.png)
+![Issue](documentation/readme/issues.png)
 
 ## Features
 
 ### Existing Features
+
+
 
 ### Future Implementations
 
