@@ -4,11 +4,11 @@
 
 {% load static %}
 <!-- Balance Section -->
-<section class="card balance m-auto mt-5">
-    <duv class="card-body text-center">
+<div class="card balance m-auto mt-5">
+    <div class="card-body text-center">
         Balance <strong>{{ balance }}€</strong>
-    </duv>
-</section>
+    </div>
+</div>
 
 <!-- Transaction Section -->
 <section class="transaction container-fluid">
@@ -41,7 +41,7 @@
                         <td><a href="{% url 'edit_transaction' pk=transaction.id %}"
                             class="btn btn-sm edit">Edit</a>
                             <a href="{% url 'delete_transaction' pk=transaction.id %}"
-                            class="btn btn-sm" id="danger">Delete</a>
+                            class="btn btn-sm danger">Delete</a>
                         </td>
                     </tr>
                 {% empty %}

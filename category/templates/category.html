@@ -16,7 +16,7 @@
         {{ category }}
         <div>
             <a href="{% url 'edit_category' pk=category.id %}" class="btn btn-sm">Edit</a>
-            <a href="{% url 'delete_category' pk=category.id %}" class="btn btn-sm" id="danger">Delete</a>
+            <a href="{% url 'delete_category' pk=category.id %}" class="btn btn-sm danger">Delete</a>
         </div>
     </li>
     {% endfor %}
