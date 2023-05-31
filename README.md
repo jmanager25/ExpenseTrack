@@ -287,8 +287,18 @@ In future inplementations I would like to:
 
 ### Code Used
 
+* ![A Quick-Start Tutorial on Relational Database Design ](https://www3.ntu.edu.sg/home/ehchua/programming/sql/Relational_Database_Design.html)
+* ![Model field reference](https://docs.djangoproject.com/en/4.2/ref/models/fields/)
+* ![Django Tutorial](https://www.tutorialspoint.com/django/django_generic_views.htm)
+* ![Class has no objects member](https://stackoverflow.com/questions/45135263/class-has-no-objects-member)
+* ![Using the Django authentication system](https://docs.djangoproject.com/en/4.2/topics/auth/default/)
+* ![Success message in DeleteView](https://stackoverflow.com/questions/24822509/success-message-in-deleteview-not-shown)
+* ![Pagination](https://realpython.com/django-pagination/)
+* ![Django filters](https://youtu.be/FTUxl5ZCMb8)
+* ![Access control ](https://youtu.be/FTUxl5ZCMb8)
+
 ### Content
 
-### Media
+* ![Using the Django authentication system](https://www.tellow.nl/)
 
 ## Acknowledgments
