@@ -1,6 +1,7 @@
 from .models import Transaction
 from django.db.models import Sum
 
+
 def get_transactions(request):
     """
     gets the transaction types total amount.

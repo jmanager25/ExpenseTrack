@@ -61,7 +61,8 @@ class CategoryUpdateView(LoginRequiredMixin, UpdateView):
         """
         obj = self.get_object()
         if obj.user != self.request.user:
-            messages.error(request, "Sorry, You dont have permission to access this category.")
+            messages.error(request, """Sorry, You dont have permission to
+            access this category.""")
             return redirect('home')
 
         return super().dispatch(request, *args, **kwargs)
@@ -88,7 +89,8 @@ class CategoryDeleteView(LoginRequiredMixin, DeleteView):
         """
         obj = self.get_object()
         if obj.user != self.request.user:
-            messages.error(request, "Sorry, You dont have permission to access this category.")
+            messages.error(request, """Sorry, You dont have permission
+            to access this category.""")
             return redirect('home')
 
         return super().dispatch(request, *args, **kwargs)

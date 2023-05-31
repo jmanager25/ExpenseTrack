@@ -59,12 +59,14 @@ class TransactionCreateView(LoginRequiredMixin, CreateView):
 
     def get_form(self, *args, **kwargs):
         """
-        Customizes the form to display only the categories and saving goals 
+        Customizes the form to display only the categories and saving goals
         created by the current user.
         """
         form = super().get_form(*args, **kwargs)
-        form.fields['category'].queryset = Category.objects.filter(user=self.request.user)
-        form.fields['saving_goal'].queryset = Savings.objects.filter(user=self.request.user)
+        form.fields['category'].queryset = Category.objects.filter(
+            user=self.request.user)
+        form.fields['saving_goal'].queryset = Savings.objects.filter(
+            user=self.request.user)
         return form
 
     def form_valid(self, form):
@@ -83,7 +85,14 @@ class TransactionUpdateView(LoginRequiredMixin, UpdateView):
     """
     model = Transaction
     template_name = "edit_transaction.html"
-    fields = ['transaction_type', 'date', 'category', 'amount', 'description', 'saving_goal']
+    fields = [
+        'transaction_type',
+        'date',
+        'category',
+        'amount',
+        'description',
+        'saving_goal'
+    ]
     success_url = reverse_lazy('home')
     login_url = 'login'
 
@@ -93,19 +102,22 @@ class TransactionUpdateView(LoginRequiredMixin, UpdateView):
         """
         obj = self.get_object()
         if obj.user != self.request.user:
-            messages.error(request, "Sorry, You dont have permission to access this transaction.")
+            messages.error(request, """Sorry, You dont have permission
+            to access this transaction.""")
             return redirect('home')
 
         return super().dispatch(request, *args, **kwargs)
 
     def get_form(self, *args, **kwargs):
         """
-        Customizes the form to display only the categories and saving goals 
+        Customizes the form to display only the categories and saving goals
         created by the current user.
         """
         form = super().get_form(*args, **kwargs)
-        form.fields['category'].queryset = Category.objects.filter(user=self.request.user)
-        form.fields['saving_goal'].queryset = Savings.objects.filter(user=self.request.user)
+        form.fields['category'].queryset = Category.objects.filter(
+            user=self.request.user)
+        form.fields['saving_goal'].queryset = Savings.objects.filter(
+            user=self.request.user)
         return form
 
     def form_valid(self, form):
@@ -135,7 +147,8 @@ class TransactionDeleteView(LoginRequiredMixin, DeleteView):
         """
         obj = self.get_object()
         if obj.user != self.request.user:
-            messages.error(request, "Sorry, You dont have permission to access this transaction.")
+            messages.error(request, """Sorry, You dont have permission to
+            access this transaction.""")
             return redirect('home')
 
         return super().dispatch(request, *args, **kwargs)

@@ -1,9 +1,9 @@
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg" id="navbar">
     <div class="container-fluid">
         <a {% if user.is_authenticated %} href="{% url 'home' %}" {% else %} href="{% url 'landing_page' %}" {% endif %}
             class="navbar-brand">Expense Tracker</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
-            aria-controls="collapse" aria-expanded="false" aria-label="Toggle navigation">
+            aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
             <span><i class="fa-solid fa-bars"></i></span>
         </button>
         {% if user.is_authenticated %}
@@ -44,4 +44,4 @@
         </div>
         {% endif %}
     </div>
-</nav>
+  </nav>

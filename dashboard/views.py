@@ -15,20 +15,24 @@ def dashboard(request):
     """
 
     income, expense, saving_goals = get_transactions(request)
-    
+
     # Get categories name an amount from the transactions
-    categories = Transaction.objects.filter(user=request.user).values('category__name').annotate(
-        Sum('amount')
-    )
+    categories = Transaction.objects.filter(user=request.user).values(
+        'category__name').annotate(
+        Sum('amount'))
 
     # Filter the categories
-    transaction_filter = TransactionFilter(request.GET, queryset=categories, user=request.user)
+    transaction_filter = TransactionFilter(
+        request.GET,
+        queryset=categories,
+        user=request.user
+    )
 
     # Pagination
     paginator = Paginator(transaction_filter.qs, 5)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    
+
     context = {
         "income": income,
         "expense": expense,

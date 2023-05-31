@@ -19,7 +19,9 @@ def savings(request):
 
     for saving_goal in saving_goals:
         saved_money = Transaction.objects.filter(
-          user=request.user, saving_goal=saving_goal, transaction_type='Saving Goal').aggregate(
+          user=request.user,
+          saving_goal=saving_goal,
+          transaction_type='Saving Goal').aggregate(
             Sum('amount'))['amount__sum'] or 0
 
         progress = (saved_money / saving_goal.target_amount) * 100
@@ -70,7 +72,8 @@ class SavingsUpdateView(LoginRequiredMixin, UpdateView):
         """
         obj = self.get_object()
         if obj.user != self.request.user:
-            messages.error(request, "Sorry, You dont have permission to access this Saving goal.")
+            messages.error(request, """Sorry, You dont have permission to
+            access this Saving goal.""")
             return redirect('home')
 
         return super().dispatch(request, *args, **kwargs)
@@ -101,7 +104,8 @@ class SavingsDeleteView(LoginRequiredMixin, DeleteView):
         """
         obj = self.get_object()
         if obj.user != self.request.user:
-            messages.error(request, "Sorry, You dont have permission to access this Saving goal.")
+            messages.error(request, """Sorry, You dont have permission to
+            access this Saving goal.""")
             return redirect('home')
 
         return super().dispatch(request, *args, **kwargs)
