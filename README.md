@@ -275,7 +275,43 @@ In future inplementations I would like to:
 
 ### Deployment
 
-### Local Development
+For the PostgreSQL Database, this project uses ElephantSQL. To get your own Postgres Database, follow these steps:
+
+1 - Sign up with your GitHub account and click on "Create New Instance" to start a new database.
+2 - Provide a name for your database.
+3 - Select the Free plan.
+4 - Once created, click on the new database name to view the database URL and password.
+5 - Cloudinary API is used to store media assets online since Heroku doesn't persist this data. To get your own Cloudinary API key, create an account and follow these steps:
+
+6 - Choose "Programmable Media" for your primary interest.
+7 - On your Cloudinary Dashboard, you can copy your API Environment Variable.
+8 - Make sure to remove the "CLOUDINARY_URL=" part of the API value, as that is the key.
+
+For Heroku deployment, which is a cloud-based platform, follow these steps after setting up your account:
+
+9 - Select "New" in the top-right corner of your Heroku Dashboard and choose "Create new app" from the dropdown menu.
+10 Enter a unique app name, select a region closest to you (EU or USA), and create the app.
+11 - In the app settings, click "Reveal Config Vars" and set the environment variables:
+* Key: CLOUDINARY_URL, Value: insert your own Cloudinary API key here
+* Key: DATABASE_URL, Value: insert your own ElephantSQL database URL here
+* Key: DISABLE_COLLECTSTATIC, Value: 1 (temporary, can be removed for the final deployment)
+* Key: SECRET_KEY, Value: this can be any random secret key
+
+Heroku requires two additional files for proper deployment:
+
+requirements.txt: Install the project's requirements using pip3 install -r requirements.txt.
+
+Procfile: Create the Procfile using the command echo web: gunicorn app_name.wsgi > Procfile (replace app_name with your Django app name).
+
+To connect your own GitHub repository to the app for Heroku deployment, follow these steps:
+
+Option 1: Select "Automatic Deployment" from the Heroku app.
+Or -
+Option 2: In the Terminal/CLI, connect to Heroku using heroku login -i.
+Set the remote for Heroku using heroku git:remote -a app_name (replace app_name with your app name).
+After adding, committing, and pushing to GitHub, run git push heroku main.
+Your project should now be connected and deployed to Heroku!
+
 
 ## Technologies Used
 
@@ -293,6 +329,7 @@ In future inplementations I would like to:
 * ElephantSQL
 * PostgreSQL
 * LucidChart Diagram
+* Slack
 
 ## Testing
 
